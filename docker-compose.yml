@@ -6,3 +6,12 @@ services:
     build:
       context: .
       dockerfile: Services/Catalogue/Catalogue.Api/Dockerfile
+
+  catalogue.db:
+    image: mongo
+
+  mongo.express:
+    image: mongo-express
+
+volumes:
+  catalogue_data:

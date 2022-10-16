@@ -2,8 +2,31 @@ version: '3.4'
 
 services:
   catalogue.api:
+    container_name: catalogue.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443
+      - "DatabaseSettings:ConnectionString=mongodb://catalogue.db:9002/"
     ports:
       - "9001:443"
+    depends_on:
+      - catalogue.db
+
+  catalogue.db:
+    container_name: catalogue.db
+    restart: always
+    command: mongod --port 9002
+    ports:
+      - "9002:27017"
+    volumes:
+      - catalogue_data:/data/db
+
+  mongo.express:
+    container_name: mongo.express
+    restart: always    
+    environment:
+      - "ME_CONFIG_MONGODB_URL=mongodb://catalogue.db:9002/"
+    ports:
+      - 9003:8081
+    depends_on:
+      - catalogue.db
