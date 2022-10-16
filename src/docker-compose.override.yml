@@ -5,10 +5,10 @@ services:
     container_name: catalogue.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443
+      - ASPNETCORE_URLS=http://+:80
       - "DatabaseSettings:ConnectionString=mongodb://catalogue.db:9002/"
     ports:
-      - "9001:443"
+      - "9001:80"
     depends_on:
       - catalogue.db
 

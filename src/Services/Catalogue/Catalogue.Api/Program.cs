@@ -22,8 +22,6 @@ namespace Catalogue.Api
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
 
