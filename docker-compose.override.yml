@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  catalogue.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443
+    ports:
+      - "9001:443"
